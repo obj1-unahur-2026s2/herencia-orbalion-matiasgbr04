@@ -4,6 +4,8 @@ class Linaje{
     const entrenador 
     var tecnologias = [ ]
 
+    method energiaTotal()
+
     method nombre(){
         return nombre
     }
@@ -32,16 +34,19 @@ class Luminico inherits Linaje{
     method nombreCristalesSolares(){
         return nombreCristalesSolares
     }
+
+    override method energiaTotal(){
+        var cant = nivelDeEnergia + self.tecnologias().sum({t => t.valorEnergetico()})
+        if (nivelDeRadiacion <= 5000){
+            cant += nivelDeEnergia.div(10)
+        }
+    }
 }
 
 class Sintetico inherits Linaje{
     var nivelProcesamientoCentral
     var cantidadModulosActivos
     var estaCertificado
-
-    method estaCertificado(){
-
-    }
 
     method nivelProcesamientoCentral(){
         return nivelProcesamientoCentral
@@ -50,6 +55,13 @@ class Sintetico inherits Linaje{
     method cantidadModulosActivos(){
         return cantidadModulosActivos
     }
+
+    override method energiaTotal(){
+        if( cantidadModulosActivos > 5){
+            nivelDeEnergia -= nivelDeEnergia.div(20)
+        }
+        return nivelDeEnergia
+    }
 }
 
 class Etericos inherits Linaje{
@@ -57,11 +69,34 @@ class Etericos inherits Linaje{
     var cantPortalesAbiertos
 }
 
-object entrenador{
-    var cantidadDeCiclosSolares = 0
-    var estaEnSintonia = true
-    var nivelPrecision = 0
-    var rol = estrategaCuantico
+class Entrenador{
+    var cantidadDeCiclosSolares
+    var estaEnSintonia
+    var nivelPrecision
+    var rol
+
+    method asignarRol(nuevoRol){
+        if(nuevoRol == estrategaCuantico or nuevoRol == arquitectoDeEnergia or nuevoRol == guiaMental){
+            rol = nuevoRol
+        } else{
+            self.error("Rol no homologado por la FOZ")
+        }
+    }
+
+    method cantidadDeCiclosSolares(){
+        return cantidadDeCiclosSolares
+    }
+
+    method estaEnSintonia(){
+        return estaEnSintonia
+    }
+}
+
+class Tecnologias{
+    const nombre
+    var valorEnergetico
+    var activa
+
 }
 
 
