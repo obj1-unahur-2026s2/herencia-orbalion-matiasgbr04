@@ -12,3 +12,9 @@ describe "equipo luminico"{
     const equipoLuminico = new Luminico( nivelDeRadiacion = 6000, nombreCristalesSolares = ["hola", "chau"], nombre = "si", nivelDeEnergia = 2000, entrenador = "unSeñor")
     
 }
+
+describe "checkpoint 3"{
+    const trainer = new Entrenador( cantidadDeCiclosSolares = 4, estaEnSintonia = true, nivelPrecision = 90, rol= arquitectoDeEnergia, cantidadDeCiclosSolares = 11, )
+    const equipo = new Luminico(nombreCristalesSolares = ["hola", "si", "re"])
+    assert.equals()
+}

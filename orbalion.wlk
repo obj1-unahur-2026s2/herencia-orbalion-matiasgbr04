@@ -21,11 +21,17 @@ class Linaje{
     method tecnologias(){
         return tecnologias
     }
+
+    method esDePrestigioUniversal()
 }
 
 class Luminico inherits Linaje{
     var nivelDeRadiacion = 0
     var nombreCristalesSolares = [ ]
+
+    override method esDePrestigioUniversal(){
+        return nombreCristalesSolares.size() > 2 and entrenador.esEliteGalactico() and tecnologias.count({t => t.activa() > 0})
+    }
 
     method nivelDeRadiacion(){
         return nivelDeRadiacion
@@ -47,6 +53,10 @@ class Sintetico inherits Linaje{
     var nivelProcesamientoCentral
     var cantidadModulosActivos
     var estaCertificado
+
+    override method esDePrestigioUniversal(){
+        return estaCertificado and cantidadModulosActivos > 3 and tecnologias.any({t => t.activa() == false})
+    }
 
     method nivelProcesamientoCentral(){
         return nivelProcesamientoCentral
@@ -100,11 +110,18 @@ class Entrenador{
     }
 }
 
-class Tecnologias{
+class Tecnologia{
     const nombre
     var valorEnergetico
     var activa
 
+    method activa(){
+        return activa
+    }
+
+    method valorEnergetico(){
+        return valorEnergetico
+    }
 }
 
 
