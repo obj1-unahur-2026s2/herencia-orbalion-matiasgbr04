@@ -75,6 +75,10 @@ class Entrenador{
     var nivelPrecision
     var rol
 
+    method esEliteGalactico(){
+        return cantidadDeCiclosSolares > 10 and rol.cumpleSuRol()
+    }
+
     method asignarRol(nuevoRol){
         if(nuevoRol == estrategaCuantico or nuevoRol == arquitectoDeEnergia or nuevoRol == guiaMental){
             rol = nuevoRol
@@ -90,6 +94,10 @@ class Entrenador{
     method estaEnSintonia(){
         return estaEnSintonia
     }
+
+    method nivelPrecision(){
+        return nivelPrecision
+    }
 }
 
 class Tecnologias{
@@ -102,13 +110,19 @@ class Tecnologias{
 
 
 object estrategaCuantico{
-
+    method cumpleSuRol(entrenador){
+        return entrenador.nivelPrecision() > 80
+    }
 }
 
 object arquitectoDeEnergia{
-
+    method cumpleSuRol(entrenador){
+        return entrenador.estaEnSintonia()
+    }
 }
 
 object guiaMental{
-
+    method cumpleSuRol(entrenador){
+        return true
+    }
 }

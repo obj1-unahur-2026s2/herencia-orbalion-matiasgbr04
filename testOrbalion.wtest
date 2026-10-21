@@ -1,0 +1,14 @@
+import orbalion.*
+
+describe "test entrenador"{
+    const trainer = new Entrenador( cantidadDeCiclosSolares = 4, estaEnSintonia = true, nivelPrecision = 5, rol= arquitectoDeEnergia)
+    test "entrenador rol distinto" {
+      assert.throwsException(trainer.asignarRol(hola))
+    }
+}
+
+describe "equipo luminico"{
+    const tecno = new Tecnologias(nombre = "hola", valorEnergetico = 200, activa = false) 
+    const equipoLuminico = new Luminico( nivelDeRadiacion = 6000, nombreCristalesSolares = ["hola", "chau"], nombre = "si", nivelDeEnergia = 2000, entrenador = "unSeñor")
+    
+}
